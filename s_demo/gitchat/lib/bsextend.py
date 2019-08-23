@@ -50,7 +50,7 @@ class BsExtend:
         }
     
     # 替换链接, 收集链接, 替换关键词
-    def parse_content(self, content, host='runoob.com', curlink=None):
+    def parse_content(self, content, host='', curlink=None):
         # 生成soup对象
         soup = BeautifulSoup(content, 'lxml')
 
@@ -79,9 +79,9 @@ class BsExtend:
             if href.find('//') == 0:
                 href = 'https:'+href
 
-            if href.find('https:') >= 0 or href.find('http:') >= 0:
+            if 'https:' in href or 'http:' in href:
                 
-                if href.find(host) >= 0:
+                if host in href >= 0:
                     
                     href = href.replace('https:','')
                     href = href.replace('http:','')
@@ -106,7 +106,7 @@ class BsExtend:
                     href = "/"+pname+"/"+href
 
                 #是不是当前手册的链接
-                if pname != '' and href.find('/'+pname+'/')>=0:
+                if pname != '' and '/'+pname+'/' in href:
                     innerlinks.append(href)
                 elif href.find('/try/') >= 0:
                     tryrunlinks.append(href)
