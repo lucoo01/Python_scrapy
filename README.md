@@ -6,7 +6,7 @@
 ```
 python export_demo.py
 ```
-
+![](scrapy模板1.gif)
 
 ## 模板已实现
 * 图片下载
